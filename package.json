@@ -1,0 +1,65 @@
+{
+  "name": "is-multiple-of",
+  "version": "1.0.0",
+  "description": "Floating point modulus for javascript.",
+  "main": "src/main.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "dist": "npx grunt browserify && npx rollup -c",
+    "coverage": "npx nyc mocha",
+    "test": "npx mocha",
+    "lint": "npx eslint src/*.js test/*.js",
+    "lint-fix": "npx eslint src/*.js test/*.js --fix",
+    "prepublishOnly": "npm run dist"
+  },
+  "files": [
+    "src/",
+    "LICENSE.txt"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tecfu/is-multiple-of.git"
+  },
+  "keywords": [
+    "is-multiple-of",
+    "modulus"
+  ],
+  "author": "tecfu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tecfu/is-multiple-of/issues"
+  },
+  "homepage": "https://github.com/tecfu/is-multiple-of#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-babili": "0.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.5.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.2",
+    "grunt-shell": "^3.0.1",
+    "husky": "^4.2.3",
+    "mocha": "^7.1.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.0.0",
+    "rollup": "^1.31.1"
+  },
+  "nyc": {
+    "all": false,
+    "include": [
+      "src/*.js"
+    ]
+  }
+}

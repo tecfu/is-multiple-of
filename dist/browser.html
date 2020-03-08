@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="module">
+      
+      // esm
+      // import { default as multipleOf } from './../dist/is-multiple-of.esm.js'
+      import multipleOf from './../dist/is-multiple-of.esm.js'
+      let out = multipleOf(3333333333333333, 0.000017)
+      console.log(out)
+
+      // let Table = require('is-multiple-of') // is-multiple-of.cjs.js
+      // let Table = TTY_Table; // is-multiple-of.umd.js
+    </script>
+    <script src="./../dist/is-multiple-of.cjs.js"></script>
+    <script>
+      let multipleOf = require('is-multiple-of') // is-multiple-of.cjs.js
+      let out = multipleOf(3333333333333333, 0.000017)
+      console.log(out)
+    </script>
+
+    <script src="./../dist/is-multiple-of.umd.js"></script>
+ 
+  </head>
+  <body>
+    hi
+  </body>
+</html>
