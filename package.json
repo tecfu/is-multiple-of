@@ -9,6 +9,8 @@
   "scripts": {
     "dist": "npx grunt browserify && npx rollup -c",
     "coverage": "npx nyc mocha",
+    "report-to-coveralls": "npx nyc report --reporter=text-lcov | npx coveralls",
+    "report-to-coverio": "npx nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
     "test": "npx mocha",
     "lint": "npx eslint src/*.js test/*.js",
     "lint-fix": "npx eslint src/*.js test/*.js --fix",
@@ -41,6 +43,8 @@
     "babelify": "^8.0.0",
     "browserify": "^16.5.0",
     "chai": "^4.2.0",
+    "codecov": "^3.6.5",
+    "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
