@@ -19,28 +19,33 @@ Input: ${x}`)
       throw new Error(`Numbers in scientific notation are not evaluated with precision in javascript.
 Input: ${x}`)
     }
-  })
+  });
 
-  // javascript can't divide floats: i.e. 4.55 / .05 === 90.999999
-  // so we convert float inputs to integers
-  // get the max number of decimal places
-  const maxPlaces = Math.max(...[dividend, divisor].map(x => countDecimals(x)))
+  // // javascript can't divide floats: i.e. 4.55 / .05 === 90.999999
+  // // so we convert float inputs to integers
+  // // get the max number of decimal places
+  // const maxPlaces = Math.max(...[dividend, divisor].map(x => countDecimals(x)))
 
-  // multiply each input times 10 raised to the max decimal places
-  if (maxPlaces > 0) {
-    // no, because in js 110.01 * 10 == 1100.1000000000001
-    // [dividend, divisor] = [dividend, divisor].map(x => x * Math.pow(10, maxPlaces))
-    [dividend, divisor] = [dividend, divisor].map(x => {
-      const arr = x.toString().split(".")
+  // // multiply each input times 10 raised to the max decimal places
+  // if (maxPlaces > 0) {
+  //   // no, because in js 110.01 * 10 == 1100.1000000000001
+  //   // [dividend, divisor] = [dividend, divisor].map(x => x * Math.pow(10, maxPlaces))
+  //   [dividend, divisor] = [dividend, divisor].map(x => {
+  //     const arr = x.toString().split(".")
 
-      // if no decimal, can safely use math
-      if (arr.length === 1) return arr[0] * Math.pow(10, maxPlaces)
+  //     // if no decimal, can safely use math
+  //     if (arr.length === 1) return arr[0] * Math.pow(10, maxPlaces)
 
-      arr[1] = arr[1] + "0".repeat(maxPlaces - arr[1].length)
-      return arr.join("")
-    })
-  }
+  //     arr[1] = arr[1] + "0".repeat(maxPlaces - arr[1].length)
+  //     return arr.join("")
+  //   })
+  // }
 
+  // multiply dividend and divisor 10^6, since the maximum number of decimal places
+  // before coversion to scientific notation is 6
+  [dividend, divisor] = [dividend, divisor].map(x => x * Math.pow(10,6));
+
+  
   // 0 is not a multiple of any number except 0
   if (dividend === 0 && divisor === 0) return true
   if (dividend === 0 || divisor === 0) return false
@@ -52,16 +57,16 @@ Input: ${x}`)
   return dividend % divisor === 0
 }
 
-const countDecimals = value => {
-  // in case number is very small and formatted in scientific notation
-  // const negMatches = (new RegExp(/e-(.*)$/).exec(value))
-  // if (negMatches) return negMatches[1]
-
-  // no decimal place
-  if (Math.floor(value) === value * 1) return 0
-
-  // decimal place found
-  return value.toString().split(".")[1].length
-}
+// const countDecimals = value => {
+//   // in case number is very small and formatted in scientific notation
+//   // const negMatches = (new RegExp(/e-(.*)$/).exec(value))
+//   // if (negMatches) return negMatches[1]
+// 
+//   // no decimal place
+//   if (Math.floor(value) === value * 1) return 0
+// 
+//   // decimal place found
+//   return value.toString().split(".")[1].length
+// }
 
 module.exports = main

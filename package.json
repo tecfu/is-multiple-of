@@ -1,6 +1,6 @@
 {
   "name": "@tecfu/is-multiple-of",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Floating point modulus for javascript.",
   "main": "src/main.js",
   "engines": {
