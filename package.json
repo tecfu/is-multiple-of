@@ -1,5 +1,5 @@
 {
-  "name": "is-multiple-of",
+  "name": "@tecfu/is-multiple-of",
   "version": "1.0.0",
   "description": "Floating point modulus for javascript.",
   "main": "src/main.js",
