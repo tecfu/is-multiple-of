@@ -27,7 +27,7 @@ multipleOf(4.55, .05)     // true
 - Node Module
 
 ```sh
-$ npm install is-multiple-of
+$ npm install @tecfu/is-multiple-of
 ```
 
 - Browser
