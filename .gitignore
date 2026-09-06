@@ -7,3 +7,5 @@ tags
 temp
 .idea
 scratch-files
+dist
+coverage
