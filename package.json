@@ -4,7 +4,7 @@
   "description": "Floating point modulus for javascript.",
   "main": "src/main.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "dist": "npx grunt browserify && npx rollup -c",
