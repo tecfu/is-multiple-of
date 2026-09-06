@@ -12,7 +12,7 @@ module.exports = {
     "it": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2020
   },
   "rules": {
     "brace-style": "error",
