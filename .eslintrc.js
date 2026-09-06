@@ -8,6 +8,7 @@ module.exports = {
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
+    "BigInt": "readonly",
     "describe": "readonly",
     "it": "readonly"
   },
