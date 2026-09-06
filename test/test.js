@@ -41,29 +41,48 @@ describe("isMultipleOf", function () {
   })
 
   it("should detect false with very small numbers", function () {
-    assert.equal(false, isMultipleOf(4.57, 0.000003)) // max places before notation
+    assert.equal(false, isMultipleOf(4.57, 0.000003))
   })
 
-  it("should detect false when input up to 16 digits or 6 decimal places", function () {
-    assert.equal(false, isMultipleOf(3333333333333333.000017, 0.000017)
-    ) // max places before notation
+  it("should support more than six decimal places", function () {
+    assert.equal(true, isMultipleOf("1.000000001", "0.000000001"))
   })
 
-  it("should throw an error when inputs are more than 16 digits long", function () {
-    expect(function () {
-      isMultipleOf(33333333333333333, 0.000017)
-    }).to.throw("Numbers more than 16 digits long are not evaluated with precision in javascript.")
+  it("should preserve exact large decimal strings", function () {
+    assert.equal(true, isMultipleOf("9007199254740993", "3"))
   })
 
-  it("should throw an error when inputs are converted to negative exponent scientific notation", function () {
-    expect(function () {
-      isMultipleOf(-0.00000000000000000007, 2)
-    }).to.throw("Numbers in scientific notation are not evaluated with precision in javascript")
+  it("should support scientific notation", function () {
+    assert.equal(true, isMultipleOf("7e-20", "1e-20"))
+    assert.equal(true, isMultipleOf(1e21, 1e20))
   })
 
-  it("should throw an error when inputs are NaN", function () {
+  it("should support negative operands", function () {
+    assert.equal(true, isMultipleOf(-9, 3))
+    assert.equal(true, isMultipleOf(9, -3))
+    assert.equal(false, isMultipleOf(-10, 3))
+  })
+
+  it("should reject non-numeric strings", function () {
     expect(function () {
       isMultipleOf("H", 2)
-    }).to.throw("Inputs must be numbers")
+    }).to.throw(TypeError, "Inputs must be finite numbers or numeric strings")
+  })
+
+  it("should reject empty strings and coercible non-number values", function () {
+    expect(function () { isMultipleOf("", 2) }).to.throw(TypeError)
+    expect(function () { isMultipleOf(true, 2) }).to.throw(TypeError)
+    expect(function () { isMultipleOf(null, 2) }).to.throw(TypeError)
+  })
+
+  it("should reject NaN and Infinity", function () {
+    expect(function () { isMultipleOf(NaN, 2) }).to.throw(TypeError)
+    expect(function () { isMultipleOf(Infinity, 2) }).to.throw(TypeError)
+  })
+
+  it("should reject exponents that are too large", function () {
+    expect(function () {
+      isMultipleOf("1e1001", "1")
+    }).to.throw(RangeError, "Exponent magnitude must not exceed 1000")
   })
 })

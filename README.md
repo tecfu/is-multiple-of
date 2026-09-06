@@ -1,49 +1,51 @@
 # is-multiple-of
 
-[![Build Status](https://travis-ci.org/tecfu/is-multiple-of.svg?branch=master)](https://travis-ci.org/tecfu/is-multiple-of) [![NPM version](https://badge.fury.io/js/is-multiple-of.svg)](http://badge.fury.io/js/is-multiple-of) [![Coverage Status](https://coveralls.io/repos/github/tecfu/is-multiple-of/badge.svg?branch=master)](https://coveralls.io/github/tecfu/is-multiple-of?branch=master)
+[![Build Status](https://github.com/tecfu/is-multiple-of/actions/workflows/ci.yml/badge.svg)](https://github.com/tecfu/is-multiple-of/actions/workflows/ci.yml) [![NPM version](https://badge.fury.io/js/is-multiple-of.svg)](http://badge.fury.io/js/is-multiple-of)
 ---
 
-Floating point modulus operator functionality for javascript. 
-Accurate to 16 digits and 6 decimal places.
+Floating point modulus operator functionality for javascript.
+
+The implementation normalizes decimal values into integers and uses `BigInt` arithmetic, avoiding the rounding errors of JavaScript's `%` operator for decimal inputs. Numeric strings and scientific notation are supported without the old six-decimal-place limitation.
 
 ---
 
 ## Rationale
 
-- javascript can't divide floats accurately: i.e. 4.55 / .05 === 90.999999
+JavaScript can't always divide floats accurately: for example:
 
 ```js
-4.55 % .05 === 0         // false
+4.55 % 0.05 === 0 // false
 ```
 
 whereas:
 
 ```js
-multipleOf(4.55, .05)     // true
+multipleOf(4.55, 0.05) // true
 ```
 
 ## Installation
-
-- Node Module
 
 ```sh
 $ npm install @tecfu/is-multiple-of
 ```
 
-- Browser
+## Usage
 
 ```js
-import multipleOf from 'https://cdn.jsdelivr.net/gh/tecfu/is-multiple-of/dist/is-multiple-of.esm.js'
-let multipleOf = require('is-multiple-of')   // https://cdn.jsdelivr.net/gh/tecfu/is-multiple-of/dist/is-multiple-of.cjs.js
-let multipleOf = IsMultipleOf;             // https://cdn.jsdelivr.net/gh/tecfu/is-multiple-of/dist/is-multiple-of.umd.js
+const multipleOf = require('@tecfu/is-multiple-of')
+
+multipleOf(4.55, 0.05) // true
+multipleOf('7e-20', '1e-20') // true
+multipleOf('9007199254740993', '3') // true
 ```
+
+Inputs must be finite numbers or decimal numeric strings. Values such as booleans, empty strings, `NaN`, and `Infinity` are rejected.
 
 ## Version Compatibility
 
-| Node Version   |   multipleOf Version    |
-| -------------- | ------------------|
-| 8.0            | >= 1.0            |
-
+| Node Version | multipleOf Version |
+| ------------ | ------------------ |
+| 18+          | >= 1.0             |
 
 ## Running tests
 
@@ -64,13 +66,12 @@ TL/DR:
 
 - feat: a feature that is visible for end users.
 - fix: a bugfix that is visible for end users.
-- chore: a change that doesn't impact end users (e.g. chances to CI pipeline)
+- chore: a change that doesn't impact end users (e.g. changes to CI pipeline)
 - docs: a change in the README or documentation
 - refactor: a change in production code focused on readability, style and/or performance.
-
 
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
 
-Copyright 2020, Tecfu. 
+Copyright 2020, Tecfu.
