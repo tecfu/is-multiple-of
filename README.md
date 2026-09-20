@@ -32,7 +32,7 @@ $ npm install @tecfu/is-multiple-of
 ## Usage
 
 ```js
-const multipleOf = require('@tecfu/is-multiple-of')
+import multipleOf from '@tecfu/is-multiple-of'
 
 multipleOf(4.55, 0.05) // true
 multipleOf('7e-20', '1e-20') // true

@@ -1,5 +1,3 @@
-"use strict"
-
 const DECIMAL_PATTERN = /^([+-]?)(?:(\d+)(?:\.(\d*))?|\.(\d+))(?:[eE]([+-]?\d+))?$/
 const MAX_EXPONENT = 1000
 
@@ -59,4 +57,4 @@ function isMultipleOf (dividend, divisor) {
   return leftInteger % rightInteger === 0n
 }
 
-module.exports = isMultipleOf
+export default isMultipleOf

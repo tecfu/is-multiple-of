@@ -1,20 +1,22 @@
 {
   "name": "@tecfu/is-multiple-of",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Floating point modulus for javascript.",
+  "type": "module",
   "main": "src/main.js",
+  "exports": {
+    ".": "./src/main.js"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dist": "npx grunt browserify && npx rollup -c",
     "coverage": "npx nyc mocha",
     "report-to-coveralls": "npx nyc report --reporter=text-lcov | npx coveralls",
     "report-to-coverio": "npx nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
     "test": "npx mocha",
     "lint": "npx eslint src/*.js test/*.js",
-    "lint-fix": "npx eslint src/*.js test/*.js --fix",
-    "prepublishOnly": "npm run dist"
+    "lint-fix": "npx eslint src/*.js test/*.js --fix"
   },
   "files": [
     "src/",

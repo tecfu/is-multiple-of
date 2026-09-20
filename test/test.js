@@ -1,6 +1,7 @@
-const isMultipleOf = require("../")
-const assert = require("assert")
-const chai = require("chai")
+import isMultipleOf from "../src/main.js"
+import assert from "assert"
+import chai from "chai"
+
 const expect = chai.expect
 
 describe("isMultipleOf", function () {
