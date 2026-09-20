@@ -1,8 +1,6 @@
 import isMultipleOf from "../src/main.js"
 import assert from "assert"
-import chai from "chai"
-
-const expect = chai.expect
+import { expect } from "chai"
 
 describe("isMultipleOf", function () {
   it("should return false when divisor is zero but dividend is nonzero", function () {

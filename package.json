@@ -11,9 +11,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "coverage": "npx nyc mocha",
-    "report-to-coveralls": "npx nyc report --reporter=text-lcov | npx coveralls",
-    "report-to-coverio": "npx nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
+    "coverage": "npx c8 mocha",
     "test": "npx mocha",
     "lint": "npx eslint src/*.js test/*.js",
     "lint-fix": "npx eslint src/*.js test/*.js --fix"
@@ -37,35 +35,13 @@
   },
   "homepage": "https://github.com/tecfu/is-multiple-of#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "babel-core": "^6.26.3",
-    "babel-preset-babili": "0.1.4",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.5.0",
-    "chai": "^4.2.0",
-    "codecov": "^3.6.5",
-    "coveralls": "^3.0.9",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "grunt": "^1.0.4",
-    "grunt-cli": "^1.3.2",
-    "grunt-shell": "^3.0.1",
-    "husky": "^4.2.3",
-    "mocha": "^7.1.0",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^15.0.0",
-    "rollup": "^1.31.1"
-  },
-  "nyc": {
-    "all": false,
-    "include": [
-      "src/*.js"
-    ]
+    "c8": "^10.1.3",
+    "chai": "^5.1.2",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "mocha": "^12.0.2"
   }
 }
